@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsvgb6bpc4yp2"]
+
+[ext_resource type="Script" uid="uid://bhtesn0gtvobf" path="res://_scripts/RobotArm.gd" id="1_tlsdd"]
+[ext_resource type="Texture2D" uid="uid://b0tcpxa6xn7pe" path="res://artwork/robot arm.svg" id="2_b3hg0"]
+[ext_resource type="Texture2D" uid="uid://dluugxdeocd81" path="res://artwork/Bomb_parts.svg" id="3_21xhy"]
+[ext_resource type="Texture2D" uid="uid://cus20mqx74sca" path="res://artwork/mimic_chest.svg" id="4_dtk7m"]
+[ext_resource type="Script" uid="uid://b27kckv17pkgm" path="res://_scripts/EyeFollow.gd" id="5_trxt6"]
+[ext_resource type="Texture2D" uid="uid://dbfx02f6yt83n" path="res://artwork/robot_character.svg" id="6_qx630"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0odxb"]
+radius = 291.548
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lswn8"]
+radius = 160.702
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a6jrf"]
+radius = 475.009
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xuqvo"]
+radius = 1675.0
+
+[node name="RobotArm" type="StaticBody2D"]
+z_index = 1
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_tlsdd")
+
+[node name="RobotArm3" type="Sprite2D" parent="."]
+position = Vector2(740, 19.9994)
+rotation = -2.35619
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_b3hg0")
+region_enabled = true
+region_rect = Rect2(2534, 1379, 374, 402)
+
+[node name="RobotArm2" type="Sprite2D" parent="."]
+position = Vector2(360, 0)
+rotation = 1.57079
+texture = ExtResource("2_b3hg0")
+region_enabled = true
+region_rect = Rect2(2967, 1211, 576, 574)
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_21xhy")
+region_enabled = true
+region_rect = Rect2(6665, 3308, 789, 789)
+
+[node name="Eyeball2" type="Sprite2D" parent="Base"]
+position = Vector2(2.75031, 5.75)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_dtk7m")
+region_enabled = true
+region_rect = Rect2(1741, 1, 217, 221)
+
+[node name="Eye2" type="Node2D" parent="Base"]
+position = Vector2(2.75079, -9.25)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("5_trxt6")
+target = NodePath("../../../PlinkoBall")
+
+[node name="Pupil" type="Sprite2D" parent="Base/Eye2"]
+position = Vector2(60, 0.000161409)
+texture = ExtResource("4_dtk7m")
+region_enabled = true
+region_rect = Rect2(2886, 89, 69, 69)
+
+[node name="RobotCharacter" type="Sprite2D" parent="."]
+position = Vector2(965, -37.0001)
+rotation = -1.57079
+scale = Vector2(2, 2)
+texture = ExtResource("6_qx630")
+region_enabled = true
+region_rect = Rect2(1462, 3405, 288, 287)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0odxb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(465, 14.9994)
+shape = SubResource("CircleShape2D_lswn8")
+
+[node name="handArea" type="Area2D" parent="."]
+position = Vector2(960, -40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="handArea"]
+position = Vector2(0.00012207, -1.14441e-05)
+shape = SubResource("CircleShape2D_a6jrf")
+debug_color = Color(0.7, 0, 0.668652, 0.42)
+
+[node name="chaseArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chaseArea"]
+shape = SubResource("CircleShape2D_xuqvo")
+debug_color = Color(0.7, 0.677371, 0.520612, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="handArea" to="." method="_on_hand_area_body_entered"]
+[connection signal="body_exited" from="handArea" to="." method="_on_hand_area_body_exited"]
+[connection signal="body_entered" from="chaseArea" to="." method="_on_chase_area_body_entered"]
+[connection signal="body_exited" from="chaseArea" to="." method="_on_chase_area_body_exited"]

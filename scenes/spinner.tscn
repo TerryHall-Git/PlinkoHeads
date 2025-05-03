@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://cetk0lg5wj52h"]
+
+[ext_resource type="Script" uid="uid://dqi5ob46n63hj" path="res://_scripts/Rotate.gd" id="1_kry60"]
+[ext_resource type="Texture2D" uid="uid://glvk2obkrbs5" path="res://artwork/droid_05.svg" id="2_beaw0"]
+[ext_resource type="Texture2D" uid="uid://dluugxdeocd81" path="res://artwork/Bomb_parts.svg" id="3_6wjsw"]
+
+[node name="Spinner" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_kry60")
+
+[node name="bg" type="Sprite2D" parent="."]
+modulate = Color(0.188703, 0.788491, 1, 1)
+position = Vector2(60, -20)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_beaw0")
+region_enabled = true
+region_rect = Rect2(3223, 1848, 826, 779)
+script = ExtResource("1_kry60")
+rotationSpeed = 720.0
+
+[node name="Blade" type="StaticBody2D" parent="."]
+position = Vector2(180, 530)
+scale = Vector2(2.5, 2.5)
+
+[node name="Droid06" type="Sprite2D" parent="Blade"]
+modulate = Color(0.141097, 0.72715, 0.863281, 1)
+texture = ExtResource("2_beaw0")
+region_enabled = true
+region_rect = Rect2(4689, 2726, 270, 555)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Blade"]
+polygon = PackedVector2Array(-124, -208, 72, 256, 92, 268, 120, 256, 120, 232, -20, -256, -48, -276, -92, -268, -124, -240)
+
+[node name="Blade3" type="StaticBody2D" parent="."]
+position = Vector2(-500, 160)
+rotation = 1.5708
+scale = Vector2(2.5, 2.5)
+
+[node name="Droid06" type="Sprite2D" parent="Blade3"]
+modulate = Color(0.141097, 0.72715, 0.863281, 1)
+texture = ExtResource("2_beaw0")
+region_enabled = true
+region_rect = Rect2(4689, 2726, 270, 555)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Blade3"]
+polygon = PackedVector2Array(-124, -208, 72, 256, 92, 268, 120, 256, 120, 232, -20, -256, -48, -276, -92, -268, -124, -240)
+
+[node name="Blade5" type="StaticBody2D" parent="."]
+position = Vector2(-120, -540)
+rotation = -3.14159
+scale = Vector2(2.5, 2.5)
+
+[node name="Droid06" type="Sprite2D" parent="Blade5"]
+modulate = Color(0.141097, 0.72715, 0.863281, 1)
+texture = ExtResource("2_beaw0")
+region_enabled = true
+region_rect = Rect2(4689, 2726, 270, 555)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Blade5"]
+polygon = PackedVector2Array(-124, -208, 72, 256, 92, 268, 120, 256, 120, 232, -20, -256, -48, -276, -92, -268, -124, -240)
+
+[node name="Blade7" type="StaticBody2D" parent="."]
+position = Vector2(579.999, -160)
+rotation = -1.5708
+scale = Vector2(2.5, 2.5)
+
+[node name="Droid06" type="Sprite2D" parent="Blade7"]
+modulate = Color(0.141097, 0.72715, 0.863281, 1)
+texture = ExtResource("2_beaw0")
+region_enabled = true
+region_rect = Rect2(4689, 2726, 270, 555)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Blade7"]
+polygon = PackedVector2Array(-124, -208, 72, 256, 92, 268, 120, 256, 120, 232, -20, -256, -48, -276, -92, -268, -124, -240)
+
+[node name="BombParts" type="Sprite2D" parent="."]
+rotation = 0.497301
+texture = ExtResource("3_6wjsw")
+region_enabled = true
+region_rect = Rect2(1535, 3061, 1215, 1184)

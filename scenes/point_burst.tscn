@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvqadtwft1s4u"]
+
+[ext_resource type="FontFile" uid="uid://cb6sfo1my3x3i" path="res://fonts/Knewave-Regular.ttf" id="1_ovxgt"]
+
+[node name="PointBurst" type="Sprite2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 320.0
+offset_bottom = 152.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("1_ovxgt")
+theme_override_font_sizes/normal_font_size = 72
+text = "99"
+autowrap_mode = 0

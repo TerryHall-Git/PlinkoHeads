@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc81w5fbd4bm"]
+
+[ext_resource type="Script" uid="uid://xw5hepj7twol" path="res://_scripts/Robot.gd" id="1_ykvnc"]
+[ext_resource type="Texture2D" uid="uid://b4a0cthfuontl" path="res://artwork/robot_shooting_spritesheet.png" id="2_i42o3"]
+
+[sub_resource type="Animation" id="Animation_1u8w0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RobotImg:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_d13ii"]
+resource_name = "idle"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RobotImg:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0odxb"]
+resource_name = "shoot"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RobotImg:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.355165),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawnRocket"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lswn8"]
+_data = {
+&"RESET": SubResource("Animation_1u8w0"),
+&"idle": SubResource("Animation_d13ii"),
+&"shoot": SubResource("Animation_0odxb")
+}
+
+[node name="Robot" type="Node2D"]
+scale = Vector2(0.45, 0.45)
+script = ExtResource("1_ykvnc")
+
+[node name="RobotImg" type="Sprite2D" parent="."]
+texture = ExtResource("2_i42o3")
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lswn8")
+}
+autoplay = "idle"
+
+[node name="RocketMarker" type="Marker2D" parent="."]
+position = Vector2(180, -57.7778)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

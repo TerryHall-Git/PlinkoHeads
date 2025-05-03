@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://grjs8i3xgfq7"]
+
+[ext_resource type="Script" uid="uid://d0wbpn84mugjr" path="res://_scripts/PlinkoBall.gd" id="1_e5ote"]
+[ext_resource type="Texture2D" uid="uid://cxvt7tecryif4" path="res://artwork/placeholder.png" id="1_t2k5q"]
+[ext_resource type="Texture2D" uid="uid://ds5mglgwydjok" path="res://artwork/Chitra.jpg" id="2_k48a1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t2k5q"]
+bounce = 0.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7dm0k"]
+radius = 31.8198
+
+[node name="PlinkoBall" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_t2k5q")
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_e5ote")
+
+[node name="mask" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(9.53674e-07, 1.90735e-06)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_t2k5q")
+
+[node name="photo" type="Sprite2D" parent="mask"]
+texture = ExtResource("2_k48a1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_7dm0k")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

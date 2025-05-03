@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://8s5yxl432m67"]
+
+[ext_resource type="Script" uid="uid://cma17hk0xifx3" path="res://_scripts/ExtendAndRotate.gd" id="1_whd0p"]
+[ext_resource type="Texture2D" uid="uid://dluugxdeocd81" path="res://artwork/Bomb_parts.svg" id="2_4ptyn"]
+[ext_resource type="AudioStream" uid="uid://c6aq4uddfmvuy" path="res://sound/PistonThud.mp3" id="3_4ptyn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vivmo"]
+radius = 396.0
+
+[node name="ExtenderMine" type="Node2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_whd0p")
+
+[node name="middle" type="Sprite2D" parent="."]
+position = Vector2(8, 20)
+texture = ExtResource("2_4ptyn")
+region_enabled = true
+region_rect = Rect2(4897, 1873, 734, 539)
+
+[node name="bottom" type="StaticBody2D" parent="."]
+position = Vector2(0, 228)
+
+[node name="BombParts" type="Sprite2D" parent="bottom"]
+texture = ExtResource("2_4ptyn")
+region_enabled = true
+region_rect = Rect2(4769, 2467, 989, 523)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom"]
+position = Vector2(0, -220)
+shape = SubResource("CircleShape2D_vivmo")
+
+[node name="top" type="StaticBody2D" parent="."]
+position = Vector2(0, 228)
+
+[node name="BombParts2" type="Sprite2D" parent="top"]
+position = Vector2(12, -476)
+texture = ExtResource("2_4ptyn")
+region_enabled = true
+region_rect = Rect2(4763, 1197, 1002, 573)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top"]
+position = Vector2(-8, -248)
+shape = SubResource("CircleShape2D_vivmo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4ptyn")
+volume_db = -8.0
