@@ -3534,12 +3534,12 @@
 		</g>
 	</g>
 	
-		<linearGradient id="path12757-2_1_" gradientUnits="userSpaceOnUse" x1="733.2913" y1="882.7241" x2="458.7102" y2="882.7241" gradientTransform="matrix(1.6679 0 0 -2.9529 1159.8445 3750.4756)">
+		<linearGradient id="path12757-2_2_" gradientUnits="userSpaceOnUse" x1="733.2913" y1="882.7241" x2="458.7102" y2="882.7241" gradientTransform="matrix(1.6679 0 0 -2.9529 1159.8445 3750.4756)">
 		<stop  offset="0" style="stop-color:#FFFF00"/>
 		<stop  offset="1" style="stop-color:#FFFF00;stop-opacity:0"/>
 	</linearGradient>
 	
-		<path id="path12757-2" inkscape:connector-curvature="0" sodipodi:nodetypes="ccccc" opacity="0.4735" fill="url(#path12757-2_1_)" enable-background="new    " d="
+		<path id="path12757-2" inkscape:connector-curvature="0" sodipodi:nodetypes="ccccc" opacity="0.4735" fill="url(#path12757-2_2_)" enable-background="new    " d="
 		M2355.492,1045.129l-469.33-89.733v376.88l466.289-48.456C2376.912,1272.215,2385.919,1045.129,2355.492,1045.129z"/>
 	<path id="path12759-9" inkscape:connector-curvature="0" fill="#FFFF00" d="M2413.314,1164.736
 		c0,59.471-14.48,107.681-32.344,107.681c-17.862,0-32.343-48.21-32.343-107.681c0-59.47,14.48-107.68,32.343-107.68
@@ -3981,4 +3981,10 @@
 		l-0.625-9.969l8.375-0.688c0.014-8.365-0.018-16.675-0.031-24.938c-3.592,0.636-6.469,1.281-6.469,1.281s-0.619-8.093,2.5-7.469
 		c0.798,0.16,2.252,0.256,3.969,0.344C4467.973,4367.352,4467.942,4363.503,4467.921,4359.465z"/>
 </g>
+<linearGradient id="path12757-2_3_" gradientUnits="userSpaceOnUse" x1="1043.1692" y1="1224.6267" x2="815.7809" y2="1224.6267" gradientTransform="matrix(-7.290624e-008 1.6679 2.9529 1.290775e-007 -535.9817 -410.6589)">
+	<stop  offset="0" style="stop-color:#FFFF00"/>
+	<stop  offset="1" style="stop-color:#FFFF00;stop-opacity:0"/>
+</linearGradient>
+<path id="path12757-2_1_" inkscape:connector-curvature="0" sodipodi:nodetypes="ccccc" opacity="0.4735" fill="url(#path12757-2_3_)" enable-background="new    " d="
+	M3320.891,1306.544l153.283-388.666h-787.789l107.073,386.147C2819.101,1324.282,3320.891,1331.741,3320.891,1306.544z"/>
 </svg>

@@ -11,6 +11,7 @@ bounce = 0.8
 radius = 31.8198
 
 [node name="PlinkoBall" type="RigidBody2D"]
+collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_t2k5q")
 contact_monitor = true
 max_contacts_reported = 5
@@ -20,6 +21,10 @@ script = ExtResource("1_e5ote")
 clip_children = 1
 position = Vector2(9.53674e-07, 1.90735e-06)
 scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_t2k5q")
+
+[node name="background" type="Sprite2D" parent="mask"]
+modulate = Color(0.492127, 0.992539, 1, 1)
 texture = ExtResource("1_t2k5q")
 
 [node name="photo" type="Sprite2D" parent="mask"]

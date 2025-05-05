@@ -1,8 +1,7 @@
-[gd_scene load_steps=52 format=3 uid="uid://q3utenb3vh4j"]
+[gd_scene load_steps=63 format=3 uid="uid://q3utenb3vh4j"]
 
 [ext_resource type="Texture2D" uid="uid://cm5o65c6s6e6e" path="res://artwork/background.png" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://grjs8i3xgfq7" path="res://scenes/plinko_ball.tscn" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://cay2ge7x7a0y6" path="res://artwork/square.png" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://ddtluxh3675rt" path="res://artwork/sci_fi_scene_props.svg" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bc81w5fbd4bm" path="res://scenes/robot.tscn" id="2_cegan"]
 [ext_resource type="Texture2D" uid="uid://dij6fv4klugth" path="res://artwork/single_pillar_right.png" id="3_272bh"]
@@ -10,10 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dwi5eu8wvsdg2" path="res://artwork/single_pillar_left_end.png" id="4_kek77"]
 [ext_resource type="Texture2D" uid="uid://hhos3cup7g36" path="res://artwork/single_pillar_right_end.png" id="5_4c57u"]
 [ext_resource type="Script" uid="uid://b73wpn15o4iix" path="res://_scripts/GrappleHolder.gd" id="7_dg77c"]
-[ext_resource type="Texture2D" uid="uid://cus20mqx74sca" path="res://artwork/mimic_chest.svg" id="7_getpj"]
+[ext_resource type="PackedScene" uid="uid://cf00baqclnmbm" path="res://scenes/chest.tscn" id="7_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://d3w0tyhs2c62k" path="res://artwork/droid3_spritesheet.png" id="7_ycdy4"]
 [ext_resource type="Script" uid="uid://khhisi4jtv34" path="res://_scripts/Grapple.gd" id="8_dg77c"]
-[ext_resource type="Script" uid="uid://b27kckv17pkgm" path="res://_scripts/EyeFollow.gd" id="8_ryguw"]
 [ext_resource type="Script" uid="uid://d3fdm33l4qtsx" path="res://_scripts/PrizeChecker.gd" id="9_0odxb"]
 [ext_resource type="PackedScene" uid="uid://5mxwo23o4sog" path="res://scenes/prize_zone.tscn" id="9_1u8w0"]
 [ext_resource type="FontFile" uid="uid://cb6sfo1my3x3i" path="res://fonts/Knewave-Regular.ttf" id="10_4c57u"]
@@ -26,9 +24,19 @@
 [ext_resource type="Shader" uid="uid://bac28rj330v1w" path="res://shaders/FadeShaderRadial.gdshader" id="17_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://7gop0c1kbl5s" path="res://artwork/Sunburst_Blue.png" id="18_xuqvo"]
 [ext_resource type="Script" uid="uid://bx0shd2cp3j6x" path="res://_scripts/RotateTextureRect.gd" id="19_xuqvo"]
+[ext_resource type="Script" uid="uid://chcffjbqhks5c" path="res://_scripts/MainMenu.gd" id="20_4k2k6"]
 [ext_resource type="Texture2D" uid="uid://crwb3umm0b2k6" path="res://artwork/droid_type_01.svg" id="20_82xsv"]
+[ext_resource type="Texture2D" uid="uid://cl31711hf126b" path="res://artwork/GUI/GUI.svg" id="20_qsp4k"]
+[ext_resource type="Script" uid="uid://brmuffq6n80we" path="res://_scripts/RestartGameButton.gd" id="21_jq2sk"]
+[ext_resource type="Script" uid="uid://hgr0ff6ax3ta" path="res://_scripts/UploadButton.gd" id="21_kq58d"]
+[ext_resource type="Texture2D" uid="uid://ds5mglgwydjok" path="res://artwork/Chitra.jpg" id="22_seu75"]
 [ext_resource type="AudioStream" uid="uid://cq2ojqbn4ti43" path="res://sound/ArcadeMusic.mp3" id="23_1u8w0"]
+[ext_resource type="Script" uid="uid://73w3jeoam2wf" path="res://_scripts/ExitGameButton.gd" id="23_4k2k6"]
 [ext_resource type="PackedScene" uid="uid://dsvgb6bpc4yp2" path="res://scenes/robot_arm.tscn" id="23_d13ii"]
+[ext_resource type="Texture2D" uid="uid://cxvt7tecryif4" path="res://artwork/placeholder.png" id="25_0rl1p"]
+[ext_resource type="Script" uid="uid://dav8qxo063wuf" path="res://_scripts/PhotoDragger.gd" id="27_ok6jj"]
+[ext_resource type="Texture2D" uid="uid://ctupocsn2nmkm" path="res://artwork/CandyWrappers.svg" id="28_b1qrp"]
+[ext_resource type="Texture2D" uid="uid://n2m5u3i26yoo" path="res://artwork/gold_stuff/crown_2.png" id="38_h8e4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
 size = Vector2(62, 5802.5)
@@ -134,7 +142,7 @@ radius = 11.7
 height = 51.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
-size = Vector2(178.279, 31.6667)
+size = Vector2(183.574, 25.7627)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efxa6"]
 radius = 135.813
@@ -146,6 +154,18 @@ shader_parameter/second_color = Color(0, 0, 0, 0)
 shader_parameter/pos_x = 0.5
 shader_parameter/pos_y = 0.5
 shader_parameter/size = 0.5
+shader_parameter/cutoff = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq58d"]
+atlas = ExtResource("20_qsp4k")
+region = Rect2(963.718, 376.692, 1097.13, 713.231)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_seu75"]
+load_path = "res://.godot/imported/GUI.svg-a7dd573030f099c8ba092ae1741de9e1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htxhm"]
+atlas = SubResource("CompressedTexture2D_seu75")
+region = Rect2(1159.94, 1288.45, 399.437, 168.593)
 
 [sub_resource type="Animation" id="Animation_ryguw"]
 resource_name = "idle"
@@ -589,38 +609,8 @@ region_rect = Rect2(41, 123, 160, 106)
 position = Vector2(1043, -2.5)
 shape = SubResource("RectangleShape2D_efxa6")
 
-[node name="Chest" type="Node2D" parent="."]
-z_index = 1
+[node name="Chest" parent="." instance=ExtResource("7_xuqvo")]
 position = Vector2(1196.75, 4570.1)
-scale = Vector2(0.3, 0.3)
-
-[node name="MimicChest" type="Sprite2D" parent="Chest"]
-texture = ExtResource("7_getpj")
-region_enabled = true
-region_rect = Rect2(3731, 2717, 404, 367)
-
-[node name="MimicChest2" type="Sprite2D" parent="Chest"]
-position = Vector2(0, -66.667)
-texture = ExtResource("7_getpj")
-region_enabled = true
-region_rect = Rect2(3715, 2306, 432, 310)
-
-[node name="Eyeball" type="Sprite2D" parent="Chest"]
-position = Vector2(0, -66.667)
-texture = ExtResource("7_getpj")
-region_enabled = true
-region_rect = Rect2(1741, 1, 217, 221)
-
-[node name="Eye" type="Node2D" parent="Chest"]
-position = Vector2(0, -76.667)
-script = ExtResource("8_ryguw")
-target = NodePath("../../PlinkoBall")
-
-[node name="Pupil" type="Sprite2D" parent="Chest/Eye"]
-position = Vector2(60, 0.000161409)
-texture = ExtResource("7_getpj")
-region_enabled = true
-region_rect = Rect2(2886, 89, 69, 69)
 
 [node name="Prong" type="Sprite2D" parent="."]
 position = Vector2(0, 4414)
@@ -910,8 +900,9 @@ node_b = NodePath("../Grapple/GrappleBody")
 softness = 0.01
 
 [node name="PlinkoBall" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(1199, 215)
-rotation = -0.593877
+unique_name_in_owner = true
+position = Vector2(1199, 213)
+rotation = 0.00949687
 freeze_mode = 1
 
 [node name="Grapple" type="Node2D" parent="."]
@@ -946,7 +937,7 @@ lock_rotation = true
 freeze_mode = 1
 
 [node name="LLeftArm" type="CollisionShape2D" parent="Grapple/GrappleBody/ULeftJoint/LLeftJoint"]
-position = Vector2(46.1918, 29.871)
+position = Vector2(46.1952, 31.394)
 rotation = 0.631123
 scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_dg77c")
@@ -983,7 +974,7 @@ lock_rotation = true
 freeze_mode = 1
 
 [node name="LRightArm" type="CollisionShape2D" parent="Grapple/GrappleBody/URightJoint/LRightJoint"]
-position = Vector2(-47.0275, 27.2815)
+position = Vector2(-47.3179, 28.1081)
 rotation = 2.57793
 scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_dg77c")
@@ -1111,140 +1102,284 @@ pivot_offset = Vector2(512, 151.5)
 texture = ExtResource("17_lswn8")
 
 [node name="MainMenu" type="Control" parent="Camera2D/UI"]
+process_mode = 2
+visible = false
 anchors_preset = 0
 offset_left = -5.0
 offset_top = 2853.0
 offset_right = 35.0
 offset_bottom = 2893.0
+script = ExtResource("20_4k2k6")
+
+[node name="BG" type="NinePatchRect" parent="Camera2D/UI/MainMenu"]
+z_index = 2
+layout_mode = 0
+offset_left = 643.0
+offset_top = 317.0
+offset_right = 1740.0
+offset_bottom = 1030.0
+texture = SubResource("AtlasTexture_kq58d")
+patch_margin_left = 165
+patch_margin_top = 122
+patch_margin_right = 163
+patch_margin_bottom = 183
+
+[node name="RestartGameBtn" type="TextureRect" parent="Camera2D/UI/MainMenu"]
+modulate = Color(0.777344, 0.777344, 0.777344, 1)
+z_index = 2
+layout_mode = 0
+offset_left = 741.0
+offset_top = 405.0
+offset_right = 1140.0
+offset_bottom = 573.0
+texture = SubResource("AtlasTexture_htxhm")
+script = ExtResource("21_jq2sk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/UI/MainMenu/RestartGameBtn"]
+modulate = Color(0.67451, 0.894118, 1, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 382.0
+offset_bottom = 149.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]RESTART[/center]"
+autowrap_mode = 0
+
+[node name="UploadBtn" type="TextureRect" parent="Camera2D/UI/MainMenu"]
+modulate = Color(0.777344, 0.777344, 0.777344, 1)
+z_index = 2
+layout_mode = 0
+offset_left = 739.0
+offset_top = 578.0
+offset_right = 1138.0
+offset_bottom = 746.0
+texture = SubResource("AtlasTexture_htxhm")
+script = ExtResource("21_kq58d")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/UI/MainMenu/UploadBtn"]
+modulate = Color(0.67451, 0.894118, 1, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 382.0
+offset_bottom = 149.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]UPLOAD[/center]"
+autowrap_mode = 0
+
+[node name="ExitBtn" type="TextureRect" parent="Camera2D/UI/MainMenu"]
+modulate = Color(0.777344, 0.777344, 0.777344, 1)
+z_index = 2
+layout_mode = 0
+offset_left = 739.0
+offset_top = 754.0
+offset_right = 1138.0
+offset_bottom = 922.0
+texture = SubResource("AtlasTexture_htxhm")
+script = ExtResource("23_4k2k6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/UI/MainMenu/ExitBtn"]
+modulate = Color(0.67451, 0.894118, 1, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 382.0
+offset_bottom = 149.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]EXIT[/center]"
+autowrap_mode = 0
+
+[node name="Control" type="Control" parent="Camera2D/UI/MainMenu"]
+anchors_preset = 0
+offset_left = 1197.0
+offset_top = 455.0
+offset_right = 1616.0
+offset_bottom = 872.0
+mouse_default_cursor_shape = 2
+
+[node name="mask" type="Sprite2D" parent="Camera2D/UI/MainMenu"]
+clip_children = 1
+z_index = 2
+position = Vector2(1407, 662)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("25_0rl1p")
+script = ExtResource("27_ok6jj")
+
+[node name="background" type="Sprite2D" parent="Camera2D/UI/MainMenu/mask"]
+modulate = Color(0.492127, 0.992539, 1, 1)
+texture = ExtResource("25_0rl1p")
+
+[node name="photo" type="Sprite2D" parent="Camera2D/UI/MainMenu/mask"]
+texture = ExtResource("22_seu75")
 
 [node name="MenuSFX" type="AudioStreamPlayer" parent="Camera2D"]
 volume_db = -3.483
 
-[node name="Square" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.580392)
-position = Vector2(499, 4810.5)
-scale = Vector2(9.1875, 6.53125)
-texture = ExtResource("2_0xm2m")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 387.0
-offset_top = 4707.0
-offset_right = 714.0
-offset_bottom = 4862.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 13
-theme_override_fonts/normal_font = ExtResource("10_4c57u")
-theme_override_font_sizes/normal_font_size = 72
-text = "CANDY!"
-autowrap_mode = 0
-
-[node name="Square2" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.580392)
-position = Vector2(1886, 4808.5)
-scale = Vector2(9.1875, 6.53125)
-texture = ExtResource("2_0xm2m")
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-offset_left = 1774.0
-offset_top = 4705.0
-offset_right = 2101.0
-offset_bottom = 4860.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 13
-theme_override_fonts/normal_font = ExtResource("10_4c57u")
-theme_override_font_sizes/normal_font_size = 72
-text = "CANDY!"
-autowrap_mode = 0
-
-[node name="Square3" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.580392)
-position = Vector2(1541, 4806.5)
-scale = Vector2(9.1875, 6.53125)
-texture = ExtResource("2_0xm2m")
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="."]
-offset_left = 1429.0
-offset_top = 4703.0
-offset_right = 1756.0
-offset_bottom = 4858.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 13
-theme_override_fonts/normal_font = ExtResource("10_4c57u")
-theme_override_font_sizes/normal_font_size = 72
-text = "CANDY!"
-autowrap_mode = 0
-
-[node name="Square4" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.580392)
-position = Vector2(854, 4810.5)
-scale = Vector2(9.1875, 6.53125)
-texture = ExtResource("2_0xm2m")
-
-[node name="RichTextLabel4" type="RichTextLabel" parent="."]
-offset_left = 742.0
-offset_top = 4707.0
-offset_right = 1069.0
-offset_bottom = 4862.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 13
-theme_override_fonts/normal_font = ExtResource("10_4c57u")
-theme_override_font_sizes/normal_font_size = 72
-text = "CANDY!"
-autowrap_mode = 0
-
-[node name="Square5" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.580392)
-position = Vector2(1202, 4825)
-scale = Vector2(9.1875, 7.43749)
-texture = ExtResource("2_0xm2m")
-
-[node name="RichTextLabel5" type="RichTextLabel" parent="."]
-offset_left = 1090.0
-offset_top = 4707.0
-offset_right = 1370.0
-offset_bottom = 4973.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 13
-theme_override_fonts/normal_font = ExtResource("10_4c57u")
-theme_override_font_sizes/normal_font_size = 72
-text = "GRAND
-PRIZE!"
-autowrap_mode = 0
-
-[node name="Square6" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.580392)
-position = Vector2(2225, 4806.5)
-scale = Vector2(9.1875, 6.53125)
-texture = ExtResource("2_0xm2m")
-
-[node name="RichTextLabel6" type="RichTextLabel" parent="."]
-offset_left = 2113.0
-offset_top = 4703.0
-offset_right = 2440.0
-offset_bottom = 4858.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 13
-theme_override_fonts/normal_font = ExtResource("10_4c57u")
-theme_override_font_sizes/normal_font_size = 72
-text = "CANDY!"
-autowrap_mode = 0
-
-[node name="Square7" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.580392)
-position = Vector2(153, 4812.5)
-scale = Vector2(9.1875, 6.53125)
-texture = ExtResource("2_0xm2m")
+[node name="CandyWrappers" type="Sprite2D" parent="."]
+position = Vector2(167.75, 4724)
+scale = Vector2(1.19686, 0.809814)
+texture = ExtResource("28_b1qrp")
+region_enabled = true
+region_rect = Rect2(8, 26, 287, 163)
 
 [node name="RichTextLabel7" type="RichTextLabel" parent="."]
-offset_left = 40.9998
-offset_top = 4709.0
-offset_right = 368.0
-offset_bottom = 4864.0
+modulate = Color(0.8875, 1, 0.73, 1)
+offset_left = 46.0
+offset_top = 4674.0
+offset_right = 289.0
+offset_bottom = 4774.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 13
 theme_override_fonts/normal_font = ExtResource("10_4c57u")
-theme_override_font_sizes/normal_font_size = 72
-text = "CANDY!"
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]Prize #3[/center]"
+autowrap_mode = 0
+
+[node name="CandyWrappers7" type="Sprite2D" parent="."]
+position = Vector2(2223.75, 4726)
+scale = Vector2(1.19686, 0.809814)
+texture = ExtResource("28_b1qrp")
+region_enabled = true
+region_rect = Rect2(8, 26, 287, 163)
+
+[node name="RichTextLabel13" type="RichTextLabel" parent="."]
+modulate = Color(0.8875, 1, 0.73, 1)
+offset_left = 2102.0
+offset_top = 4676.0
+offset_right = 2345.0
+offset_bottom = 4776.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]Prize #3[/center]"
+autowrap_mode = 0
+
+[node name="CandyWrappers2" type="Sprite2D" parent="."]
+position = Vector2(503.152, 4724)
+scale = Vector2(1.19686, 0.809814)
+texture = ExtResource("28_b1qrp")
+region_enabled = true
+region_rect = Rect2(3, 195, 286, 163)
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="."]
+modulate = Color(0.734375, 1, 1, 1)
+offset_left = 381.402
+offset_top = 4674.0
+offset_right = 624.402
+offset_bottom = 4774.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]Prize #2[/center]"
+autowrap_mode = 0
+
+[node name="CandyWrappers6" type="Sprite2D" parent="."]
+position = Vector2(1886.15, 4726)
+scale = Vector2(1.19686, 0.809814)
+texture = ExtResource("28_b1qrp")
+region_enabled = true
+region_rect = Rect2(3, 195, 286, 163)
+
+[node name="RichTextLabel12" type="RichTextLabel" parent="."]
+modulate = Color(0.734375, 1, 1, 1)
+offset_left = 1764.4
+offset_top = 4676.0
+offset_right = 2007.4
+offset_bottom = 4776.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]Prize #2[/center]"
+autowrap_mode = 0
+
+[node name="CandyWrappers3" type="Sprite2D" parent="."]
+position = Vector2(850.152, 4723)
+scale = Vector2(1.19686, 0.809814)
+texture = ExtResource("28_b1qrp")
+region_enabled = true
+region_rect = Rect2(4, 364, 286, 163)
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="."]
+modulate = Color(0.955274, 0.804688, 1, 1)
+offset_left = 728.402
+offset_top = 4673.0
+offset_right = 971.402
+offset_bottom = 4773.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]Prize #1
+[/center]"
+autowrap_mode = 0
+
+[node name="CandyWrappers5" type="Sprite2D" parent="."]
+position = Vector2(1544.15, 4725)
+scale = Vector2(1.19686, 0.809814)
+texture = ExtResource("28_b1qrp")
+region_enabled = true
+region_rect = Rect2(4, 364, 286, 163)
+
+[node name="RichTextLabel11" type="RichTextLabel" parent="."]
+modulate = Color(0.955274, 0.804688, 1, 1)
+offset_left = 1422.4
+offset_top = 4675.0
+offset_right = 1665.4
+offset_bottom = 4775.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]Prize #1
+[/center]"
+autowrap_mode = 0
+
+[node name="CandyWrappers4" type="Sprite2D" parent="."]
+position = Vector2(1203.82, 4759.36)
+scale = Vector2(1.19686, 1.30735)
+texture = ExtResource("28_b1qrp")
+region_enabled = true
+region_rect = Rect2(3, 537, 284, 164)
+
+[node name="RichTextLabel10" type="RichTextLabel" parent="."]
+modulate = Color(1, 0.984408, 0.746485, 1)
+offset_left = 1085.67
+offset_top = 4669.56
+offset_right = 1329.67
+offset_bottom = 4854.56
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("10_4c57u")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]GRAND 
+PRIZE!
+[/center]"
 autowrap_mode = 0
 
 [node name="ExtenderMine" parent="." instance=ExtResource("14_w48qg")]
@@ -1508,3 +1643,27 @@ rotation = 0.659014
 stream = ExtResource("23_1u8w0")
 volume_db = -3.483
 autoplay = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+process_mode = 2
+title = "Open a File"
+initial_position = 1
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+
+[node name="Crown2" type="Sprite2D" parent="."]
+position = Vector2(1087, 4649)
+rotation = -0.499663
+scale = Vector2(0.269546, 0.234002)
+texture = ExtResource("38_h8e4i")
+
+[connection signal="gui_input" from="Camera2D/UI/MainMenu/RestartGameBtn" to="Camera2D/UI/MainMenu/RestartGameBtn" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Camera2D/UI/MainMenu/RestartGameBtn" to="Camera2D/UI/MainMenu/RestartGameBtn" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/UI/MainMenu/RestartGameBtn" to="Camera2D/UI/MainMenu/RestartGameBtn" method="_on_mouse_exited"]
+[connection signal="gui_input" from="Camera2D/UI/MainMenu/UploadBtn" to="Camera2D/UI/MainMenu/UploadBtn" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Camera2D/UI/MainMenu/UploadBtn" to="Camera2D/UI/MainMenu/UploadBtn" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/UI/MainMenu/UploadBtn" to="Camera2D/UI/MainMenu/UploadBtn" method="_on_mouse_exited"]
+[connection signal="gui_input" from="Camera2D/UI/MainMenu/ExitBtn" to="Camera2D/UI/MainMenu/ExitBtn" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Camera2D/UI/MainMenu/ExitBtn" to="Camera2D/UI/MainMenu/ExitBtn" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/UI/MainMenu/ExitBtn" to="Camera2D/UI/MainMenu/ExitBtn" method="_on_mouse_exited"]

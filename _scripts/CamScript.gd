@@ -18,8 +18,13 @@ var isPanning: bool = true  # Flag to track if the camera is panning
 var panStartTime: float = 0.0  # Time when the pan started
 var elapsedTime:float = 0.0
 var lastUpdateTime: int = -1 
+var gameStarted:bool = false
 
 func _ready():
+	startGame()
+	
+func startGame():
+	gameStarted = true
 	# Start the camera at maxLevelSizeY
 	position.y = Global.maxLevelSizeY
 	
@@ -31,12 +36,14 @@ func _ready():
 	tween.tween_property(self, "position:y", target.global_position.y + yOffset, panDuration)
 	tween.finished.connect(_on_pan_finished)
 	
+	
 
 func _on_pan_finished():
 	countLabel.visible = false
 	isPanning = false  # Stop panning once the tween is complete
 
 func updateUI():
+	if !gameStarted: return
 	var remainingTime = int(max(0.0, panDuration - elapsedTime))
 	if remainingTime == 0:
 		countLabel.text = "[center]START![/center]"

@@ -6,6 +6,7 @@ extends Node2D
 @onready var menuSFX:AudioStreamPlayer
 @onready var musicPlayer:AudioStreamPlayer
 
+var chest:Node2D
 var winScreen:Control
 var winMessage:TextureRect
 
@@ -17,8 +18,9 @@ var winMessage:TextureRect
 ]
 
 func _ready() -> void:
-	menuSFX = get_tree().current_scene.find_child("Camera2D").get_node("MenuSFX")
-	musicPlayer = get_tree().current_scene.find_child("MusicPlayer")
+	menuSFX = get_tree().current_scene.get_node("Camera2D/MenuSFX")
+	musicPlayer = get_tree().current_scene.get_node("MusicPlayer")
+	chest = get_tree().current_scene.get_node("Chest")
 	await get_tree().process_frame
 	winScreen = get_tree().current_scene.find_child("Camera2D").get_node("UI/WinScreen")
 	winMessage = winScreen.get_node("WinMessage")
@@ -27,6 +29,7 @@ func _ready() -> void:
 			child.player_won.connect(playerWon)
 
 func playerWon(prize: String) -> void:
+	print("Player won " + prize)
 	menuSFX.stream = yay
 	menuSFX.play()
 	
@@ -40,8 +43,10 @@ func playerWon(prize: String) -> void:
 func _on_music_fade_out_finished(prize: String) -> void:
 	menuSFX.stream = success
 	menuSFX.play()
+
 	if prize == "GRAND_PRIZE":
 		winMessage.texture = grandPrize
+		chest.open()
 	else:
 		winMessage.texture = winMessages[randi() % winMessages.size()]
 	
