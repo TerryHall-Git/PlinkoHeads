@@ -9,19 +9,20 @@ var rotatingBodies: Array = []  # List of bodies to rotate
 var rotationSpeeds: Dictionary = {}  # Dictionary to store rotation speeds for each body
 var targetRotations: Dictionary = {}  # Dictionary to store target rotations for each body
 
+var isOpen:bool = false
+
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey && Input.is_action_just_released("ui_accept") && Global.canPlay:
+	if !isOpen && event is InputEventKey && Input.is_action_just_released("ui_accept") && Global.canPlay:
 		rotateBody(uLeftJoint, 35)
 		rotateBody(uRightJoint, -35)
 		rotateBody(lLeftJoint, 35)
 		rotateBody(lRightJoint, -35)
+		isOpen = true
 
 func rotateBody(rigidBody: RigidBody2D, degrees: float) -> void:
-	# Add the body to the rotating list
-	if not rotatingBodies.has(rigidBody):
-		rotatingBodies.append(rigidBody)
-		rotationSpeeds[rigidBody] = degToRad(degrees) / 0.5  # Rotate over 0.5 seconds
-		targetRotations[rigidBody] = rigidBody.rotation + degToRad(degrees)  # Set the target rotation
+	rotatingBodies.append(rigidBody)
+	rotationSpeeds[rigidBody] = degToRad(degrees) / 0.5  # Rotate over 0.5 seconds
+	targetRotations[rigidBody] = rigidBody.rotation + degToRad(degrees)  # Set the target rotation
 
 func _physics_process(delta: float) -> void:
 	# Update the rotation of each body

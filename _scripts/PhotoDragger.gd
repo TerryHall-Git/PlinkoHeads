@@ -3,6 +3,10 @@ extends Sprite2D
 var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 @onready var photo: Sprite2D = $photo
+var mouseArea:Control 
+
+func _ready() -> void:
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

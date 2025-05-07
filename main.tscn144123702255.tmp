@@ -1042,6 +1042,7 @@ target = NodePath("../PlinkoBall")
 metadata/_edit_lock_ = true
 
 [node name="UI" type="Control" parent="Camera2D"]
+visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
@@ -1109,7 +1110,6 @@ texture = ExtResource("17_lswn8")
 
 [node name="MainMenu" type="Control" parent="Camera2D/UI"]
 process_mode = 2
-visible = false
 anchors_preset = 0
 offset_left = -5.0
 offset_top = 2853.0

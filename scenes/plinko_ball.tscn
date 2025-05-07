@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://grjs8i3xgfq7"]
+[gd_scene load_steps=7 format=3 uid="uid://grjs8i3xgfq7"]
 
 [ext_resource type="Script" uid="uid://d0wbpn84mugjr" path="res://_scripts/PlinkoBall.gd" id="1_e5ote"]
 [ext_resource type="Texture2D" uid="uid://cxvt7tecryif4" path="res://artwork/placeholder.png" id="1_t2k5q"]
 [ext_resource type="Texture2D" uid="uid://ds5mglgwydjok" path="res://artwork/Chitra.jpg" id="2_k48a1"]
+[ext_resource type="Texture2D" uid="uid://b6jlhj8ovsnsh" path="res://artwork/BubbleSimple.png" id="4_76qa4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t2k5q"]
 bounce = 0.8
@@ -29,6 +30,12 @@ texture = ExtResource("1_t2k5q")
 
 [node name="photo" type="Sprite2D" parent="mask"]
 texture = ExtResource("2_k48a1")
+
+[node name="BubbleSimple" type="Sprite2D" parent="mask/photo"]
+modulate = Color(1, 1, 1, 0.411765)
+position = Vector2(-2.00001, 2)
+scale = Vector2(1.02344, 1.02344)
+texture = ExtResource("4_76qa4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)

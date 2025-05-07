@@ -1,21 +1,25 @@
 extends Node2D
 
+@onready var prize1:Texture2D = preload("res://artwork/win_messages/PRIZE1.png")
+@onready var prize2:Texture2D = preload("res://artwork/win_messages/PRIZE2.png")
+@onready var prize3:Texture2D = preload("res://artwork/win_messages/PRIZE3.png")
+@onready var grandPrize: Texture2D = preload("res://artwork/win_messages/GRAND_PRIZE.png")
+
+@onready var burst_green:Texture2D = preload("res://artwork/Sunburst_Green.png")
+@onready var burst_blue:Texture2D = preload("res://artwork/Sunburst_Blue.png")
+@onready var burst_purple:Texture2D = preload("res://artwork/Sunburst_Purple.png")
+@onready var burst_gold:Texture2D = preload("res://artwork/Sunburst_OrangeYellow.png")
+
 @onready var success: AudioStream = preload("res://sound/Success.mp3")
 @onready var yay: AudioStream = preload("res://sound/Yay.mp3")
-@onready var grandPrize: Texture2D = preload("res://artwork/win_messages/GRAND_PRIZE.png")
 @onready var menuSFX:AudioStreamPlayer
 @onready var musicPlayer:AudioStreamPlayer
 
 var chest:Node2D
 var winScreen:Control
 var winMessage:TextureRect
+var winBackground:TextureRect
 
-@onready var winMessages: Array[Texture2D] = [
-	preload("res://artwork/win_messages/CONGRATZ.png"),
-	preload("res://artwork/win_messages/EXCELLENT.png"),
-	preload("res://artwork/win_messages/NICE_JOB.png"),
-	preload("res://artwork/win_messages/YOU_WIN.png")
-]
 
 func _ready() -> void:
 	menuSFX = get_tree().current_scene.get_node("Camera2D/MenuSFX")
@@ -24,11 +28,15 @@ func _ready() -> void:
 	await get_tree().process_frame
 	winScreen = get_tree().current_scene.find_child("Camera2D").get_node("UI/WinScreen")
 	winMessage = winScreen.get_node("WinMessage")
+	winBackground = winScreen.get_node("WinBG")
+	
 	for child in get_children():
 		if child.has_signal("player_won"):
 			child.player_won.connect(playerWon)
 
 func playerWon(prize: String) -> void:
+	Global.canPlay = false
+	
 	print("Player won " + prize)
 	menuSFX.stream = yay
 	menuSFX.play()
@@ -41,14 +49,27 @@ func playerWon(prize: String) -> void:
 	tween.finished.connect(_on_music_fade_out_finished.bind(prize))
 
 func _on_music_fade_out_finished(prize: String) -> void:
+	
 	menuSFX.stream = success
 	menuSFX.play()
-
-	if prize == "GRAND_PRIZE":
-		winMessage.texture = grandPrize
-		chest.open()
-	else:
-		winMessage.texture = winMessages[randi() % winMessages.size()]
+	
+	match prize:
+		"PRIZE1":
+			winMessage.texture = prize1
+			winBackground.texture = burst_purple
+			chest.hop()
+		"PRIZE2":
+			winMessage.texture = prize2
+			winBackground.texture = burst_blue
+			chest.hop()
+		"PRIZE3":
+			winMessage.texture = prize3
+			winBackground.texture = burst_green
+			chest.hop()
+		"GRAND_PRIZE":
+			winMessage.texture = grandPrize
+			winBackground.texture = burst_gold
+			chest.open()
 	
 	winScreen.visible = true
 

@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dluugxdeocd81" path="res://artwork/Bomb_parts.svg" id="3_21xhy"]
 [ext_resource type="Texture2D" uid="uid://cus20mqx74sca" path="res://artwork/mimic_chest.svg" id="4_dtk7m"]
 [ext_resource type="Script" uid="uid://b27kckv17pkgm" path="res://_scripts/EyeFollow.gd" id="5_trxt6"]
-[ext_resource type="Texture2D" uid="uid://dbfx02f6yt83n" path="res://artwork/robot_character.svg" id="6_qx630"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_40hkc"]
+load_path = "res://.godot/imported/robot_character.svg-98b4bde29f0abba9a3fafd174ad30313.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0odxb"]
 radius = 291.548
@@ -14,10 +16,10 @@ radius = 291.548
 radius = 160.702
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a6jrf"]
-radius = 475.009
+radius = 365.137
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xuqvo"]
-radius = 1675.0
+radius = 1910.79
 
 [node name="RobotArm" type="StaticBody2D"]
 z_index = 1
@@ -56,7 +58,6 @@ region_rect = Rect2(1741, 1, 217, 221)
 position = Vector2(2.75079, -9.25)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("5_trxt6")
-target = NodePath("../../../PlinkoBall")
 
 [node name="Pupil" type="Sprite2D" parent="Base/Eye2"]
 position = Vector2(60, 0.000161409)
@@ -64,11 +65,11 @@ texture = ExtResource("4_dtk7m")
 region_enabled = true
 region_rect = Rect2(2886, 89, 69, 69)
 
-[node name="RobotCharacter" type="Sprite2D" parent="."]
+[node name="Hand" type="Sprite2D" parent="."]
 position = Vector2(965, -37.0001)
 rotation = -1.57079
-scale = Vector2(2, 2)
-texture = ExtResource("6_qx630")
+scale = Vector2(1.5, 1.5)
+texture = SubResource("CompressedTexture2D_40hkc")
 region_enabled = true
 region_rect = Rect2(1462, 3405, 288, 287)
 
@@ -81,6 +82,7 @@ shape = SubResource("CircleShape2D_lswn8")
 
 [node name="handArea" type="Area2D" parent="."]
 position = Vector2(960, -40)
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="handArea"]
 position = Vector2(0.00012207, -1.14441e-05)
@@ -88,6 +90,7 @@ shape = SubResource("CircleShape2D_a6jrf")
 debug_color = Color(0.7, 0, 0.668652, 0.42)
 
 [node name="chaseArea" type="Area2D" parent="."]
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chaseArea"]
 shape = SubResource("CircleShape2D_xuqvo")

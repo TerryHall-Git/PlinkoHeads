@@ -27,16 +27,6 @@ func _ready():
 		
 func _physics_process(_delta: float) -> void:
 	if disableReactions: return
-	
-	# Freeze movement if the 'P' key is held
-	# TEMPORARY ----------------------
-	if Input.is_action_pressed("pause"):  
-		linear_velocity = Vector2.ZERO
-		gravity_scale = 0
-		return
-	else:
-		gravity_scale = 1  
-	# /TEMPORARY ----------------------
 		
 	# Clamp the velocity to the maximum velocity
 	if linear_velocity.length() > maxVelocity:

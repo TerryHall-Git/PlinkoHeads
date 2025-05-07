@@ -9,16 +9,15 @@ extends Camera2D
 @export var maxFollowSpeed: float = 20.0  # Maximum follow speed
 @export var velocityThreshold: float = 500.0  # Velocity at which max follow speed is reached
 @export var yOffset: float = 200.0 
-@export var panDuration: float = 6.0  # Duration of the initial pan in seconds
+@export var panDurationFrames: int = 360  # Duration of the initial pan in frames (e.g., 6 seconds at 60 FPS)
 
-@onready var countLabel:RichTextLabel = $UI/CountLabel
-@onready var menuSFX:AudioStreamPlayer = $MenuSFX
+@onready var countLabel: RichTextLabel = $UI/CountLabel
+@onready var menuSFX: AudioStreamPlayer = $MenuSFX
 
 var isPanning: bool = true  # Flag to track if the camera is panning
-var panStartTime: float = 0.0  # Time when the pan started
-var elapsedTime:float = 0.0
-var lastUpdateTime: int = -1 
-var gameStarted:bool = false
+var panStartFrame: int = 0  # Frame when the pan started
+var currentFrame: int = 0  # Current frame count
+var gameStarted: bool = false
 
 func _ready():
 	startGame()
@@ -28,15 +27,14 @@ func startGame():
 	# Start the camera at maxLevelSizeY
 	position.y = Global.maxLevelSizeY
 	
-	# Record the start time of the pan
-	panStartTime = Time.get_ticks_msec() / 1000.0  # Convert milliseconds to seconds
+	# Record the start frame of the pan
+	panStartFrame = 0
+	currentFrame = 0
 	updateUI()
 	
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position:y", target.global_position.y + yOffset, panDuration)
+	tween.tween_property(self, "position:y", target.global_position.y + yOffset, float(panDurationFrames) / 60.0)
 	tween.finished.connect(_on_pan_finished)
-	
-	
 
 func _on_pan_finished():
 	countLabel.visible = false
@@ -44,7 +42,8 @@ func _on_pan_finished():
 
 func updateUI():
 	if !gameStarted: return
-	var remainingTime = int(max(0.0, panDuration - elapsedTime))
+	var remainingFrames = max(0, panDurationFrames - currentFrame)
+	var remainingTime = int(ceil(float(remainingFrames) / 60.0))-1  # Convert frames to seconds
 	if remainingTime == 0:
 		countLabel.text = "[center]START![/center]"
 		menuSFX.stream = ding2
@@ -54,13 +53,12 @@ func updateUI():
 		countLabel.text = "[center]" + str(remainingTime) + "[/center]"
 		menuSFX.stream = ding1
 		menuSFX.play()
-			
+
 func _process(delta):
 	if isPanning:
-		elapsedTime = (Time.get_ticks_msec() / 1000.0) - panStartTime
+		currentFrame += 1  # Increment the frame counter
 		
-		if int(elapsedTime) > lastUpdateTime:
-			lastUpdateTime = int(elapsedTime)
+		if currentFrame % 60 == 0 or currentFrame == panDurationFrames:
 			updateUI()
 		return  
 		

@@ -16,5 +16,5 @@ void fragment() {
     vec4 fade = mix(first_color, second_color, fade_factor);
 
     COLOR = texColor;
-    COLOR.a = fade.a;
+    COLOR.a = fade.a/2.0;
 }

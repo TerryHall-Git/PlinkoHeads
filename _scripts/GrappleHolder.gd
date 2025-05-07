@@ -34,6 +34,7 @@ func updateAnimation():
 			animPlayer.play("idle")
 
 func _process(delta: float) -> void:
+	if !Global.canPlay: return
 	# Get input for left and right movement
 	direction = 0
 	if Input.is_action_pressed("ui_left") && Global.canPlay:

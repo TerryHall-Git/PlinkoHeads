@@ -35,3 +35,6 @@ func _fire_coin() -> void:
 
 func reset():
 	animPlayer.play("RESET")
+	
+func hop():
+	animPlayer.play("hop")
