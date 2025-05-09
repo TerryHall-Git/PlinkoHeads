@@ -4,6 +4,7 @@ extends Node2D
 @export var extendDuration: float = 0.1  # Duration for extending in seconds
 @export var retractDuration: float = 0.5  # Duration for retracting in seconds
 @export var rotationSpeed: float = 90.0  # Rotation speed in degrees per second
+@export var reverseRotation: bool = false  # Option to reverse rotation
 @export var minStartDelay: float = 0.0  # Minimum random delay in seconds
 @export var maxStartDelay: float = 2.0  # Maximum random delay in seconds
 
@@ -68,8 +69,9 @@ func _extendAndRotate(delta: float) -> void:
 		if extending:
 			audioPlayer.play()
 
-	# Rotate self continuously
-	rotation += deg_to_rad(rotationSpeed * delta)
+	# Rotate self continuously, reverse direction if reverseRotation is true
+	var rotationDirection = -1 if reverseRotation else 1
+	rotation += deg_to_rad(rotationSpeed * delta * rotationDirection)
 
 func deg_to_rad(degrees: float) -> float:
 	return degrees * PI / 180.0

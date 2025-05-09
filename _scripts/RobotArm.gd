@@ -4,6 +4,7 @@ extends StaticBody2D
 @onready var base: Node2D = $Base
 @onready var audioPlayer:AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+@export var keypress: Node2D 
 @export var rotationSpeed: float = 90.0
 @export var maxRotationSpeed: float = 540.0  
 @export var speedIncreaseRate: float = 75.0
@@ -32,7 +33,9 @@ func _physics_process(delta: float) -> void:
 
 		# Clamp the rotation speed to the maximum value
 		rotationSpeed = min(rotationSpeed, maxRotationSpeed)
-
+		
+		Global.player.rotation -= deg_to_rad(rotationSpeed * delta)
+		
 		if Input.is_action_just_pressed("ui_accept"):
 			call_deferred("_releasePlayer")
 	
@@ -42,21 +45,21 @@ func _physics_process(delta: float) -> void:
 func _holdPlayer() -> void:
 	isHolding = true
 	Global.player.freeze = true
-	Global.player.lock_rotation = true
 	Global.player.disableReactions = true
 	Global.player.linear_velocity = Vector2.ZERO
 	# Place the target at the marker's global position
 	Global.player.global_position = handArea.global_position
+	
 
 func _releasePlayer() -> void:
 	# Unlock the player and reset holding state
 	Global.player.disableReactions = false
-	Global.player.lock_rotation = false
 	isHolding = false
 	Global.player.freeze = false
 	rotationSpeed = 60.0  # Reset rotation speed after release
 	cooldownActive = true
 	cooldownTimer.start()
+	if keypress: keypress.visible = false
 	
 	call_deferred("_apply_release_impulse") 
 
@@ -92,6 +95,7 @@ func _on_chase_area_body_exited(body: Node2D) -> void:
 func _on_hand_area_body_entered(body: Node2D) -> void:
 	if isHolding: return
 	if body == Global.player and not targetExitedChaseZone and not cooldownActive:
+		if keypress: keypress.visible = true
 		call_deferred("_holdPlayer")
 
 func _on_cooldown_timer_timeout() -> void:

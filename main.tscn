@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://q3utenb3vh4j"]
+[gd_scene load_steps=64 format=3 uid="uid://q3utenb3vh4j"]
 
 [ext_resource type="Texture2D" uid="uid://cm5o65c6s6e6e" path="res://artwork/background.png" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://grjs8i3xgfq7" path="res://scenes/plinko_ball.tscn" id="1_ig7tw"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://cxvt7tecryif4" path="res://artwork/placeholder.png" id="25_0rl1p"]
 [ext_resource type="Script" uid="uid://dav8qxo063wuf" path="res://_scripts/PhotoDragger.gd" id="27_ok6jj"]
 [ext_resource type="Texture2D" uid="uid://ctupocsn2nmkm" path="res://artwork/CandyWrappers.svg" id="28_b1qrp"]
+[ext_resource type="PackedScene" uid="uid://bxdv80ilf882q" path="res://scenes/keypress_anim.tscn" id="36_b1qrp"]
 [ext_resource type="Texture2D" uid="uid://n2m5u3i26yoo" path="res://artwork/gold_stuff/crown_2.png" id="38_h8e4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
@@ -300,6 +301,14 @@ texture = ExtResource("1_1bvp3")
 
 [node name="Background4" type="Sprite2D" parent="Backgrounds"]
 position = Vector2(1800, 384)
+texture = ExtResource("1_1bvp3")
+
+[node name="Background15" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(600, -1149)
+texture = ExtResource("1_1bvp3")
+
+[node name="Background16" type="Sprite2D" parent="Backgrounds"]
+position = Vector2(1800, -1149)
 texture = ExtResource("1_1bvp3")
 
 [node name="Background5" type="Sprite2D" parent="Backgrounds"]
@@ -1113,8 +1122,8 @@ visible = false
 anchors_preset = 0
 offset_left = -5.0
 offset_top = 2853.0
-offset_right = 35.0
-offset_bottom = 2893.0
+offset_right = 2406.0
+offset_bottom = 4199.0
 script = ExtResource("20_4k2k6")
 
 [node name="BG" type="NinePatchRect" parent="Camera2D/UI/MainMenu"]
@@ -1138,6 +1147,7 @@ offset_left = 741.0
 offset_top = 405.0
 offset_right = 1140.0
 offset_bottom = 573.0
+mouse_default_cursor_shape = 2
 texture = SubResource("AtlasTexture_htxhm")
 script = ExtResource("21_jq2sk")
 
@@ -1165,6 +1175,7 @@ offset_left = 739.0
 offset_top = 578.0
 offset_right = 1138.0
 offset_bottom = 746.0
+mouse_default_cursor_shape = 2
 texture = SubResource("AtlasTexture_htxhm")
 script = ExtResource("21_kq58d")
 
@@ -1192,6 +1203,7 @@ offset_left = 739.0
 offset_top = 754.0
 offset_right = 1138.0
 offset_bottom = 922.0
+mouse_default_cursor_shape = 2
 texture = SubResource("AtlasTexture_htxhm")
 script = ExtResource("23_4k2k6")
 
@@ -1218,7 +1230,7 @@ offset_left = 1197.0
 offset_top = 455.0
 offset_right = 1616.0
 offset_bottom = 872.0
-mouse_default_cursor_shape = 2
+mouse_default_cursor_shape = 13
 
 [node name="mask" type="Sprite2D" parent="Camera2D/UI/MainMenu"]
 clip_children = 1
@@ -1398,6 +1410,7 @@ position = Vector2(771, 597)
 [node name="ExtenderMine3" parent="." instance=ExtResource("14_w48qg")]
 position = Vector2(1193, 728)
 rotation = 1.5708
+reverseRotation = true
 
 [node name="ExtenderMine4" parent="." instance=ExtResource("14_w48qg")]
 position = Vector2(2041, 491)
@@ -1636,15 +1649,26 @@ texture = ExtResource("20_82xsv")
 region_enabled = true
 region_rect = Rect2(3228, 4806, 1328, 1398)
 
-[node name="RobotArm" parent="." instance=ExtResource("23_d13ii")]
+[node name="RobotArm" parent="." node_paths=PackedStringArray("keypress") instance=ExtResource("23_d13ii")]
 position = Vector2(1443, 2513)
+keypress = NodePath("../KeypressAnim2")
 
-[node name="RobotArm3" parent="." instance=ExtResource("23_d13ii")]
+[node name="KeypressAnim2" parent="." instance=ExtResource("36_b1qrp")]
+position = Vector2(1444, 2575)
+
+[node name="RobotArm3" parent="." node_paths=PackedStringArray("keypress") instance=ExtResource("23_d13ii")]
 position = Vector2(574, 3241)
+keypress = NodePath("../KeypressAnim3")
 
-[node name="RobotArm2" parent="." instance=ExtResource("23_d13ii")]
+[node name="KeypressAnim3" parent="." instance=ExtResource("36_b1qrp")]
+position = Vector2(574, 3304)
+
+[node name="RobotArm2" parent="." node_paths=PackedStringArray("keypress") instance=ExtResource("23_d13ii")]
 position = Vector2(372, 891)
-rotation = 0.659014
+keypress = NodePath("../KeypressAnim")
+
+[node name="KeypressAnim" parent="." instance=ExtResource("36_b1qrp")]
+position = Vector2(372, 955)
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_1u8w0")
@@ -1665,6 +1689,9 @@ rotation = -0.499663
 scale = Vector2(0.269546, 0.234002)
 texture = ExtResource("38_h8e4i")
 
+[node name="Randomizer" type="Node2D" parent="."]
+
+[connection signal="visibility_changed" from="Camera2D/UI/MainMenu" to="Camera2D/UI/MainMenu" method="_on_visibility_changed"]
 [connection signal="gui_input" from="Camera2D/UI/MainMenu/RestartGameBtn" to="Camera2D/UI/MainMenu/RestartGameBtn" method="_on_gui_input"]
 [connection signal="mouse_entered" from="Camera2D/UI/MainMenu/RestartGameBtn" to="Camera2D/UI/MainMenu/RestartGameBtn" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/UI/MainMenu/RestartGameBtn" to="Camera2D/UI/MainMenu/RestartGameBtn" method="_on_mouse_exited"]
