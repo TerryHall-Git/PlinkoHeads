@@ -31,7 +31,7 @@ texture = ExtResource("1_t2k5q")
 [node name="photo" type="Sprite2D" parent="mask"]
 texture = ExtResource("2_k48a1")
 
-[node name="BubbleSimple" type="Sprite2D" parent="mask/photo"]
+[node name="BubbleSimple" type="Sprite2D" parent="mask"]
 modulate = Color(1, 1, 1, 0.411765)
 position = Vector2(-2.00001, 2)
 scale = Vector2(1.02344, 1.02344)

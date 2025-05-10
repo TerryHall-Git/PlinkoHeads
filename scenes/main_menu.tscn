@@ -1,0 +1,164 @@
+[gd_scene load_steps=13 format=3 uid="uid://oh8uh7ggw1t4"]
+
+[ext_resource type="Script" uid="uid://chcffjbqhks5c" path="res://_scripts/MainMenu.gd" id="1_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://cl31711hf126b" path="res://artwork/GUI/GUI.svg" id="2_5dd4i"]
+[ext_resource type="Script" uid="uid://brmuffq6n80we" path="res://_scripts/RestartGameButton.gd" id="3_lgwnu"]
+[ext_resource type="FontFile" uid="uid://cb6sfo1my3x3i" path="res://fonts/Knewave-Regular.ttf" id="4_flqon"]
+[ext_resource type="Script" uid="uid://hgr0ff6ax3ta" path="res://_scripts/UploadButton.gd" id="5_rcqid"]
+[ext_resource type="Script" uid="uid://73w3jeoam2wf" path="res://_scripts/ExitGameButton.gd" id="6_1ajci"]
+[ext_resource type="Texture2D" uid="uid://cxvt7tecryif4" path="res://artwork/placeholder.png" id="7_7b55j"]
+[ext_resource type="Script" uid="uid://dav8qxo063wuf" path="res://_scripts/PhotoDragger.gd" id="8_5pajh"]
+[ext_resource type="Texture2D" uid="uid://ds5mglgwydjok" path="res://artwork/Chitra.jpg" id="9_j7ex8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq58d"]
+atlas = ExtResource("2_5dd4i")
+region = Rect2(963.718, 376.692, 1097.13, 713.231)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_seu75"]
+load_path = "res://.godot/imported/GUI.svg-a7dd573030f099c8ba092ae1741de9e1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htxhm"]
+atlas = SubResource("CompressedTexture2D_seu75")
+region = Rect2(1159.94, 1288.45, 399.437, 168.593)
+
+[node name="MainMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_jk1qb")
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="NinePatchRect" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = -541.0
+offset_top = -347.0
+offset_right = 556.0
+offset_bottom = 366.0
+texture = SubResource("AtlasTexture_kq58d")
+patch_margin_left = 165
+patch_margin_top = 122
+patch_margin_right = 163
+patch_margin_bottom = 183
+
+[node name="RestartGameBtn" type="TextureRect" parent="."]
+modulate = Color(0.777344, 0.777344, 0.777344, 1)
+z_index = 2
+layout_mode = 0
+offset_left = -443.0
+offset_top = -259.0
+offset_right = -44.0
+offset_bottom = -91.0
+mouse_default_cursor_shape = 2
+texture = SubResource("AtlasTexture_htxhm")
+script = ExtResource("3_lgwnu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RestartGameBtn"]
+modulate = Color(0.67451, 0.894118, 1, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 382.0
+offset_bottom = 149.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("4_flqon")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]RESTART[/center]"
+autowrap_mode = 0
+
+[node name="UploadBtn" type="TextureRect" parent="."]
+modulate = Color(0.777344, 0.777344, 0.777344, 1)
+z_index = 2
+layout_mode = 0
+offset_left = -445.0
+offset_top = -86.0
+offset_right = -46.0
+offset_bottom = 82.0
+mouse_default_cursor_shape = 2
+texture = SubResource("AtlasTexture_htxhm")
+script = ExtResource("5_rcqid")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UploadBtn"]
+modulate = Color(0.67451, 0.894118, 1, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 382.0
+offset_bottom = 149.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("4_flqon")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]UPLOAD[/center]"
+autowrap_mode = 0
+
+[node name="ExitBtn" type="TextureRect" parent="."]
+modulate = Color(0.777344, 0.777344, 0.777344, 1)
+z_index = 2
+layout_mode = 0
+offset_left = -445.0
+offset_top = 90.0
+offset_right = -46.0
+offset_bottom = 258.0
+mouse_default_cursor_shape = 2
+texture = SubResource("AtlasTexture_htxhm")
+script = ExtResource("6_1ajci")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ExitBtn"]
+modulate = Color(0.67451, 0.894118, 1, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 382.0
+offset_bottom = 149.0
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 13
+theme_override_fonts/normal_font = ExtResource("4_flqon")
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]EXIT[/center]"
+autowrap_mode = 0
+
+[node name="MouseArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = -209.0
+offset_right = 432.0
+offset_bottom = 208.0
+mouse_default_cursor_shape = 13
+
+[node name="mask" type="Sprite2D" parent="."]
+clip_children = 1
+z_index = 2
+position = Vector2(223, -1.99994)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_7b55j")
+script = ExtResource("8_5pajh")
+
+[node name="background" type="Sprite2D" parent="mask"]
+modulate = Color(0.492127, 0.992539, 1, 1)
+texture = ExtResource("7_7b55j")
+
+[node name="photo" type="Sprite2D" parent="mask"]
+texture = ExtResource("9_j7ex8")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="gui_input" from="RestartGameBtn" to="RestartGameBtn" method="_on_gui_input"]
+[connection signal="mouse_entered" from="RestartGameBtn" to="RestartGameBtn" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RestartGameBtn" to="RestartGameBtn" method="_on_mouse_exited"]
+[connection signal="gui_input" from="UploadBtn" to="UploadBtn" method="_on_gui_input"]
+[connection signal="mouse_entered" from="UploadBtn" to="UploadBtn" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UploadBtn" to="UploadBtn" method="_on_mouse_exited"]
+[connection signal="gui_input" from="ExitBtn" to="ExitBtn" method="_on_gui_input"]
+[connection signal="mouse_entered" from="ExitBtn" to="ExitBtn" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ExitBtn" to="ExitBtn" method="_on_mouse_exited"]

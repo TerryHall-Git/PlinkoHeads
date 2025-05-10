@@ -19,6 +19,8 @@ var extending: bool = true  # True when extending, false when retracting
 var isActive: bool = false  # Controls whether the extend and rotate logic is active
 
 func _ready() -> void:
+	reverseRotation = randi() % 2 == 0  # 50% chance for true or false
+	
 	# Store the original positions of the top and bottom parts
 	topOriginalPosition = topPart.position
 	bottomOriginalPosition = bottomPart.position

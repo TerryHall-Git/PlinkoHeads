@@ -1,6 +1,7 @@
 extends TextureRect
 
-@onready var clickSound: AudioStream = preload("res://sound/Click1.mp3")  
+@onready var clickSound1: AudioStream = preload("res://sound/Click1.mp3")  
+@onready var clickSound2: AudioStream = preload("res://sound/Click2.mp3") 
 
 var audioPlayer:AudioStreamPlayer
 
@@ -25,7 +26,7 @@ func _ready() -> void:
 func _on_mouse_entered() -> void:
 	# Change the modulate color to pure white
 	modulate = Color(1, 1, 1)
-	audioPlayer.stream = clickSound
+	audioPlayer.stream = clickSound1
 	audioPlayer.play()
 
 func _on_mouse_exited() -> void:
@@ -35,6 +36,8 @@ func _on_mouse_exited() -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		openFileDialog()
+		audioPlayer.stream = clickSound2
+		audioPlayer.play()
 
 func openFileDialog():	
 	# Open the FileDialog
@@ -44,6 +47,7 @@ func _on_file_selected(path: String) -> void:
 	# Load the selected image as a texture
 	var image = Image.new()
 	if image.load(path) == OK:
+		Global.updateImgPath(path)
 		print("loading photo")
 		var imgTexture = ImageTexture.create_from_image(image)
 		var photoSprite1: Sprite2D = Global.player.get_node("mask/photo")
